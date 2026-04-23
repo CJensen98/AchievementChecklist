@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Achievementchecklist", "Achievementchecklist.csproj", "{D924B887-CE80-0435-B227-0F95118A79AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D924B887-CE80-0435-B227-0F95118A79AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D924B887-CE80-0435-B227-0F95118A79AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D924B887-CE80-0435-B227-0F95118A79AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D924B887-CE80-0435-B227-0F95118A79AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D75461F9-F0CB-4BA9-8F9B-8F311E8149D9}
+	EndGlobalSection
+EndGlobal

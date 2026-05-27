@@ -6,6 +6,7 @@ namespace AchievementChecklist;
 public partial class Form1 : Form
 {
     
+    string path = "userData.txt";
 
     public Form1()
     {
@@ -25,12 +26,22 @@ public partial class Form1 : Form
         // checkBox.CheckedChanged += (s, e) => MessageBox.Show(checkBox.Checked ? "Checked!" : "Unchecked!");
         // Controls.Add(checkBox);
 
-        var box = new ListBox { Location = new Point(10, 130), Width = 200, Height = 100 };
+        if(!File.Exists(path))
+        {
+            File.Create(path).Close();
+        }
+
+        var box = new CheckedListBox { Location = new Point(10, 130), Width = 200, Height = 100 };
+        var lines = File.ReadAllLines(path);
+        box.Items.AddRange(lines);
+
         button.Click += (s, e) => 
         {
             if (!string.IsNullOrWhiteSpace(textBox.Text))
             {
-                box.Items.Add(textBox.Text);
+                string text = textBox.Text;
+                box.Items.Add(text);
+                File.AppendAllText(path, text + Environment.NewLine);
                 textBox.Clear();
             }
         };

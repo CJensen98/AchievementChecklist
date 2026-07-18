@@ -1,4 +1,4 @@
-namespace AchievementChecklist;
+﻿namespace AchievementChecklist;
 
 static class Program
 {

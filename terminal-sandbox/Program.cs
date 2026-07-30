@@ -1,33 +1,47 @@
 using System;
-using System.Text.Json;
-
 
 namespace TerminalSandbox;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
+    {
+        
+        await CreateGoalFromUserInput();
+        ///Or check goalStats??
+    }
+
+    private static async Task CreateGoalFromUserInput()
     {
         Console.Write("Hello, what achievements would you like to accomplish? >>");
-        string ? input = Console.ReadLine();
+        string? input = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            Console.WriteLine("Input cannot be empty. Please enter a valid achievement.");
+            return;
+        }
+
         Console.WriteLine($"You entered: {input}");
         Console.Write("how many times a day can the goal be accomplished? >>");
-        string ? input2 = Console.ReadLine();
+        string? input2 = Console.ReadLine();
         Console.WriteLine($"You entered: {input2}");
-        bool resultOfToday = QuestionTodaysGoalCompleted(input);
 
+        string filePath = "stats.json";
+        await GoalCreater(input, filePath);
+
+        ///bool resultOfToday = QuestionTodaysGoalCompleted(input);
     }
 
     public static bool QuestionTodaysGoalCompleted(string goal)
     {
         while (true)
-        {    
+        {
             Console.Write($"Did you complete your goal of {goal} today? (yes/no) >>");
-            string ? input = Console.ReadLine();
+            string? input = Console.ReadLine();
 
-
-           if (input != null)
-           {
+            if (input != null)
+            {
                 input = input.Trim().ToLower();
                 if (input == "yes")
                 {
@@ -45,32 +59,13 @@ internal class Program
             else
             {
                 Console.WriteLine("Input cannot be null. Please enter 'yes' or 'no'.");
-                
             }
-
         }
     }
 
-    public static void GoalTracker(bool result)
+
+    public static async Task GoalCreater(string goalName, string filePath)
     {
-        string filePath = "stats.json";
-
-        var stats = new
-        {
-            daysCompleted = 0,
-            Streak = 0
-        };
-
-        if (result == true)
-        {
-
-            Console.WriteLine("Congratulations! You completed your goal today.");
-
-        }
-        else
-        {
-            Console.WriteLine("Don't worry! You can try again tomorrow.");
-        }
+        await Stats.CreateNewGoal(filePath, goalName);
     }
-    
 }
